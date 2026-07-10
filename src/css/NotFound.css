@@ -1,0 +1,55 @@
+/* NotFound 404 Page Stylesheet */
+
+.notfound-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+.notfound-code {
+  font-size: clamp(5rem, 15vw, 8rem);
+  font-weight: 900;
+  color: var(--primary);
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 12px;
+  text-shadow: 0 4px 10px rgba(79, 70, 229, 0.1);
+}
+
+.notfound-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.notfound-desc {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 420px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.notfound-home-btn {
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.15);
+}
+
+.notfound-home-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
