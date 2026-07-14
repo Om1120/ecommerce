@@ -1,90 +1,59 @@
 /* Navbar Styles - Top bar with logo and links */
 
-/* The white bar at the top of every page */
 .navbar-wrapper {
   background-color: #ffffff;
   border-bottom: 1px solid #e2e8f0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
 }
 
-/* Inner layout of the navbar - logo on left, links in middle, cart on right */
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 70px;
-  padding: 0 4%;
+  padding: 0 20px;
   max-width: 1200px;
   margin: 0 auto;
-  position: relative;
 }
 
-/* The website name/logo */
 .navbar-logo {
   font-size: 24px;
   font-weight: 800;
   color: #1e293b;
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
-/* The colored part of the logo */
 .navbar-logo span {
-  color: #1e293b;
+  color: #4f46e5;
 }
 
-/* Desktop nav links - Home, Products, Cart, etc. */
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 30px;
   list-style: none;
 }
 
-/* Each link text */
 .navbar-links a {
   font-size: 15px;
   font-weight: 500;
   color: #1e293b;
   padding: 8px 4px;
-  position: relative;
 }
 
-/* Change color when hovering or on active page */
 .navbar-links a:hover,
 .navbar-links a.active {
   color: #4f46e5;
+  border-bottom: 2px solid #4f46e5;
 }
 
-/* Underline animation when hovering a link */
-.navbar-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #4f46e5;
-  transition: width 0.25s;
-}
-
-.navbar-links a:hover::after,
-.navbar-links a.active::after {
-  width: 100%;
-}
-
-/* Right side of navbar - cart button and hamburger */
 .navbar-actions {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-/* Cart bag icon button */
 .cart-icon-btn {
   position: relative;
   font-size: 20px;
@@ -93,8 +62,9 @@
   align-items: center;
   justify-content: center;
   padding: 8px;
-  border-radius: 50%;
   background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
 }
 
 .cart-icon-btn:hover {
@@ -102,100 +72,68 @@
   color: #4f46e5;
 }
 
-/* Red number badge showing how many items in cart */
 .cart-badge {
   position: absolute;
-  top: -4px;
-  right: -4px;
+  top: -8px;
+  right: -8px;
   background-color: #ef4444;
   color: #ffffff;
   font-size: 11px;
   font-weight: 700;
   border-radius: 50%;
-  min-width: 18px;
+  width: 18px;
   height: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2px;
 }
 
-/* Hamburger button (3 lines) for mobile */
+/* Hamburger menu toggle button for mobile */
 .menu-toggle-btn {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 24px;
   height: 18px;
-  padding: 0;
   cursor: pointer;
 }
 
-/* Each line of the hamburger icon */
 .menu-toggle-btn span {
   display: block;
   height: 2px;
   width: 100%;
   background-color: #1e293b;
-  border-radius: 2px;
-  transition: all 0.25s;
-}
-
-/* Turns hamburger into X when menu is open */
-.menu-toggle-btn.open span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.menu-toggle-btn.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle-btn.open span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Mobile dropdown menu */
 .mobile-nav-menu {
+  display: none;
   position: absolute;
   top: 70px;
   left: 0;
   right: 0;
   background-color: #ffffff;
   border-bottom: 1px solid #e2e8f0;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
   list-style: none;
   z-index: 999;
-  /* Hidden by default */
-  transform: translateY(-100%);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.25s;
 }
 
-/* Show the mobile menu when open class is added */
 .mobile-nav-menu.open {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-/* Links inside mobile menu */
 .mobile-nav-menu a {
   font-size: 16px;
   font-weight: 600;
   color: #1e293b;
   padding: 10px;
-  border-radius: 6px;
-  display: block;
 }
 
 .mobile-nav-menu a:hover,
 .mobile-nav-menu a.active {
   background-color: #f8fafc;
   color: #4f46e5;
-  padding-left: 15px;
 }
