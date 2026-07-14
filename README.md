@@ -1,79 +1,83 @@
-# ecom
+# React E-Commerce Store
 
 A clean, modern, and fully responsive E-Commerce web application built using **Vite + React JS**.
 
-Designed and structured to match standard guidelines, the codebase reflects the work of a student who has mastered up to **Topic 13 (React Basics, LocalStorage, Axios Calling, Router, and Toastify)**.
+---
+
+## 📚 Core Topics Used in this Project
+
+This website utilizes several core frontend web development topics. Here is the list of topics implemented:
+
+### 1. Component Architecture & Reusability
+* **Functional Components:** Organized into pages and reusable UI components.
+* **Props (Properties):** Passing data and action handlers (like functions) down from parent to child components (e.g., passing product data to `ProductCard`, passing handlers to `CartItem`).
+* **Prop Destructuring:** Using modern ES6 destructuring (`const CartItem = ({ item, onRemove }) => ...`) for cleaner and more readable code.
+
+### 2. State Management (`useState`)
+* **Local State:** Managing local UI variables like the active state of the mobile navbar menu (`isOpen`), the quantity stepper count (`quantity`), loading indicators (`loading`), and API errors (`error`).
+* **Lifted / Global State:** Lifting the shopping cart state (`cartItems`) up to the parent `App.jsx` so it can be shared and updated across different routes/pages.
+
+### 3. Lifecycle & Side Effects (`useEffect`)
+* **API Fetching on Mount:** Fetching the products catalog once when the application boots up.
+* **Event Listeners:** Attaching a window resize event listener in the `Navbar` component to dynamically check screen width and close the mobile menu on desktop screens, with correct clean-up on unmount.
+* **State Synchronization:** Automatically syncing the cart state with `localStorage` whenever the cart changes.
+
+### 4. API Integration with Axios
+* **REST API Calls:** Fetching all products from the external public API (`https://dummyjson.com/products?limit=0`).
+* **Dynamic Details Page Fetching:** Querying a specific item's details dynamically using its ID (`https://dummyjson.com/products/${id}`).
+* **Asynchronous Handling:** Using promises (`.then()` and `.catch()`) to handle loading and error states during API calls.
+
+### 5. Client-Side Routing (React Router DOM)
+* **BrowserRouter, Routes, Route:** Setting up clean URLs for navigation (`/`, `/products`, `/products/:id`, `/cart`, and wildcard `*` for a custom 404 page).
+* **Dynamic Route Parameters (`useParams`):** Extracting the dynamic product ID from the URL path to load the corresponding product details page.
+* **URL Search Params (`useSearchParams`):** Reading the active category parameter from the URL query string (`/products?category=beauty`) to filter products accordingly.
+
+### 6. Local Storage Persistence
+* **State Persistence:** Using `localStorage.getItem()` and `localStorage.setItem()` to store the shopping cart as a JSON string so that items remain in the cart even if the user refreshes the page.
+
+### 7. Interactive User Notifications (React Toastify)
+* **Toast Alerts:** Giving visual, instant feedback to users when they perform cart actions (e.g., adding an item, updating quantities, removing an item, or clearing the cart).
+
+### 8. Custom Vanilla CSS & Responsiveness
+* **Flexbox & CSS Grid:** Arranging components (like the product grid, cart layout, and navbar) dynamically.
+* **Media Queries & Mobile-First Design:** Adapting font sizes, margins, and columns to fit all screen sizes (phones, tablets, laptops, and desktops).
+* **CSS Variables (Tokens):** Reusing colors, padding, and font weights for design consistency.
 
 ---
 
-## Features
+## 📂 Updated Project Structure
 
-- **Responsive Viewport Layouts:** Custom Flexbox and CSS Grid designs adapt seamlessly to desktop, tablet, and mobile screens without a single `@media` CSS query.
-- **Dynamic Product Catalogue:** Pulls 30 products from the `https://dummyjson.com/products` endpoint via Axios with visual loading and error-boundary fallbacks.
-- **Full Catalog Search & Sort:** Instantly query items by title/description and sort them dynamically by Price (ascending/descending) or Alphabetically (A-Z/Z-A).
-- **Category Filter Interface:** Browse through specialized chips to filter the grid by category (Beauty, Fragrance, Laptops, Groceries, etc.), fully synced with React Router query parameters.
-- **Stateful Shopping Cart:** Add products, update quantities, remove items, clear catalog, and observe automatic subtotal, flat rate shipping, and grand total recalculations.
-- **Persistent Storage:** Synced with browser `localStorage` to keep cart products intact upon reload.
-- **Form Submissions:** Newsletter forms built with local state validation checks and interactive Toast notification messaging responses.
-
----
-
-## Technologies Used
-
-- **HTML5 & Vanilla CSS3** (Flexbox, CSS Grid, clamp font scaling)
-- **JavaScript (ES6)** (Array methods, destructuring, spreads)
-- **React JS** (Functional Components, props, rendering lists)
-- **React Router DOM** (Client-side routing, useParams, useSearchParams)
-- **Axios** (API requests)
-- **React Toastify** (Status notifications)
-
----
-
-## Project Structure
-
-```
+```text
 ecom/
 │
-├── public/
-│
 ├── src/
-│   │
-│   ├── assets/
-│   │      hero_electronics.png
-│   │
 │   ├── css/
-│   │      Navbar.css
-│   │      Home.css
-│   │      Product.css
-│   │      ProductDetails.css
-│   │      Cart.css
-│   │      Footer.css
-│   │      NotFound.css
+│   │   ├── Navbar.css
+│   │   ├── Home.css
+│   │   ├── Product.css
+│   │   ├── ProductDetails.css
+│   │   ├── Cart.css
+│   │   ├── Footer.css
+│   │   └── NotFound.css
 │   │
 │   ├── components/
-│   │      Navbar.jsx
-│   │      Footer.jsx
-│   │      Hero.jsx
-│   │      ProductCard.jsx
-│   │      ProductList.jsx
-│   │      Category.jsx
-│   │      SearchBar.jsx
-│   │      Filter.jsx
-│   │      Carousel.jsx
-│   │      Newsletter.jsx
-│   │      CartItem.jsx
-│   │      Loading.jsx
+│   │   ├── Navbar.jsx          # Header with logo, pages link, and cart badge
+│   │   ├── Footer.jsx          # Footer with info, links, and contact information
+│   │   ├── ProductCard.jsx     # Individual product grid cell item
+│   │   ├── ProductList.jsx     # Grid container rendering all cards
+│   │   ├── CartItem.jsx        # Row representation of product inside cart
+│   │   └── Loading.jsx         # Spinner shown when API is fetching
 │   │
 │   ├── pages/
-│   │      Home.jsx
-│   │      Products.jsx
-│   │      ProductDetails.jsx
-│   │      Cart.jsx
-│   │      NotFound.jsx
+│   │   ├── Home.jsx            # Category grid page
+│   │   ├── Products.jsx        # Product catalog page (with category filters)
+│   │   ├── ProductDetails.jsx  # Single product detail view page with custom stepper
+│   │   ├── Cart.jsx            # Shopping cart overview & summary
+│   │   └── NotFound.jsx        # Custom 404 page
 │   │
-│   ├── App.jsx
-│   ├── index.css
-│   ├── main.jsx
+│   ├── App.jsx                 # Entry point defining routes, global state, and handlers
+│   ├── index.css               # Global variables & base reset styles
+│   └── main.jsx                # Renders App component into HTML DOM root
 │
 ├── package.json
 └── README.md
@@ -81,48 +85,19 @@ ecom/
 
 ---
 
-## Installation & Setup
+## ⚙️ Installation & Running Locally
 
-Ensure you have [Node.js](https://nodejs.org) installed on your system.
-
-1. **Navigate to the project root:**
+1. **Clone or download the project** to your local computer.
+2. **Open the project folder in terminal:**
    ```bash
    cd ecom
    ```
-
-2. **Install all packages and dependencies:**
+3. **Install dependencies:**
    ```bash
    npm install
    ```
-
-3. **Start the development server:**
+4. **Run the local development server:**
    ```bash
    npm run dev
    ```
-
-4. **Open in browser:**
-   Open the localhost address shown in your console (usually `http://localhost:5173`).
-
----
-
-## Technical Constraints Respected
-
-1. **No `@media` Queries:** All responsiveness is achieved using CSS Flexbox (with wrapping), Grid auto-layouts (`repeat(auto-fit, minmax(...))`), relative percentage sizing, and Javascript event width tracking for menu toggles.
-2. **No `key` props:** List items are loaded in standard mapping layouts without setting the JSX `key` property.
-3. **Lifted State Pattern:** Cart global state is maintained in `App.jsx` and passed to child components via props, avoiding Context API, Redux, or custom hook abstractions.
-4. **Vite Boilerplate Cleanup:** Deleted default assets, styling sheets, and variables for a bespoke look.
-
----
-
-## Screenshots Placeholder
-
-*[Screenshots showing Home carousel, Filter controls, and Cart subtotals will be added here]*
-
----
-
-## Future Improvements
-
-- Integrate actual backend services for payment gateways (Stripe/PayPal).
-- Implement persistent User Accounts and authentication flow.
-- Add product review submission fields.
-- Integrate database tables to persist client cart state permanently inside user accounts.
+5. **Open in browser:** Visit `http://localhost:5173`.
