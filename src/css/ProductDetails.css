@@ -140,30 +140,39 @@
 
 /* The - 1 + quantity box */
 .quantity-selector {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  background-color: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #ffffff;
   overflow: hidden;
-  height: 48px;
+  height: 40px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 
 /* The minus and plus buttons */
 .qty-btn {
-  width: 44px;
+  width: 40px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  font-weight: 700;
-  background-color: transparent;
-  transition: background-color 0.2s;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #ffffff;
+  color: #374151;
+  transition: background-color 0.15s;
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 .qty-btn:hover {
-  background-color: #e2e8f0;
+  background-color: #f3f4f6;
+}
+
+.qty-btn:active {
+  background-color: #e5e7eb;
 }
 
 /* The number in the middle */
@@ -173,11 +182,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 15px;
+  color: #111827;
   background-color: #ffffff;
-  border-left: 1px solid #e2e8f0;
-  border-right: 1px solid #e2e8f0;
+  border-left: 1.5px solid #e2e8f0;
+  border-right: 1.5px solid #e2e8f0;
+  user-select: none;
 }
 
 /* "Add to Cart" button */

@@ -23,23 +23,21 @@ function CartItem(props) {
       <div className="cart-item-price-qty">
         <div className="cart-item-price">${item.price}</div>
 
-        <div className="quantity-selector" style={{ height: '36px' }}>
+        <div className="quantity-selector">
           <button
             onClick={function() { props.onDecrease(item.id); }}
             className="qty-btn"
-            style={{ width: '32px' }}
           >
-            <i className="fa-solid fa-minus"></i>
+            −
           </button>
-          <div className="qty-value" style={{ width: '32px', fontSize: '13px' }}>
+          <div className="qty-value">
             {item.quantity}
           </div>
           <button
             onClick={function() { props.onIncrease(item.id); }}
             className="qty-btn"
-            style={{ width: '32px' }}
           >
-            <i className="fa-solid fa-plus"></i>
+            +
           </button>
         </div>
       </div>
